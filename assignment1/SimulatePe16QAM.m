@@ -15,7 +15,7 @@ close all
 tic
 
 % Number of simulated symbols
-N = 50000;
+N = 250;
 % Noise variance
 sigma2 = 1;
 

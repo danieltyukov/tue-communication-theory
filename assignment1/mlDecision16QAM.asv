@@ -6,10 +6,13 @@ function s_hat = mlDecision16QAM(r, P)
     for i = 1:size(msg, 2)
         si = msg(:, i); % Constellation point
         dist = norm(r - si);
-        if dist < min_dist % if better distance found...
+        % Update minimum distance and index if closer point 
+        if dist < min_dist
             min_dist = dist;
             mini = i;
         end
     end
+    
+    % Assign the closest constellation point as the estimate
     s_hat = msg(:, mini);
 end
