@@ -4,6 +4,7 @@
 load('A2_Dataset.mat');
 t = linspace(0, N_data*N_frame, N_data*N_frame*N_sps);      % time vector for waveform signals [us]
 P = 0.5;
+
 %% Q2.1
 % OOK Modulator
 s_t = OOKModulation(P, phi, b);
@@ -17,15 +18,15 @@ ylabel('Amplitude [V]');
 xlim([440 456]);    % <- fill in values
 
 set(gcf, 'Units','normalized', 'Position',  [0.1, 0.1, 0.8, 0.5]);
+
 % -----------------------------------------------------------------
 %% Q2.2
 % Check filtered signal (Example with r_n2)
-u_t = filter(phi, 1, r_n2);
+u_t = filter(phi, 1, r_n3);
 figure(1); plot(t, u_t, 'LineWidth', 2);
-
 % Obtain received signal samples
-T0 =;     % <- fill in
-T =;      % <- fill in
+T0 = 101;     % <- fill in
+T = 101;      % <- fill in ask if this value is supposed to be 101 or it can be anything
 
 r_k1 = MFReceiver(r_n1, phi, T0, T);
 r_k2 = MFReceiver(r_n2, phi, T0, T);
@@ -61,7 +62,7 @@ fprintf("BER_1 = %.4f | BER_2 = %.4f | BER_3 = %.4f\n", ber1, ber2, ber3);
 
 %% Q2.5
 % Estimate Signal-to-Noise Ratio
-s_k =;      % <- fill in
+s_k = b*sqrt(2*P);% <- fill in
 
 snr1 = EstimateSNR(r_k1, s_k);
 snr2 = EstimateSNR(r_k2, s_k);
@@ -88,6 +89,6 @@ plot(t_temps, temps_real/10, 'k--', 'LineWidth', 2); hold on; grid on
 
 xlabel('Time [s]'), ylabel('Temperature [C]')
 legend('r_1(t) [SNR='+string(round(snr1))+' dB]','r_2(t) [SNR='+string(round(snr2))+' dB]','r_3(t) [SNR='+string(round(snr3))+' dB]','s(t)')
+%legend('r_2(t) [SNR='+string(round(snr2))+' dB]','s(t)')
 set(gcf, 'Units','normalized', 'Position',  [0.1, 0.1, 0.7, 0.7]);
 % -----------------------------------------------------------------
-
