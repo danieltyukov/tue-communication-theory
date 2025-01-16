@@ -24,6 +24,7 @@ for idx = 1:length(SNR)
         
         %Encode the codeword using your implementation
         encoded = encodeHamming(info);
+%%
     
         %Modulate the encoded symbols using OOK modulation
         modulated = sqrt(2*P) * encoded;
