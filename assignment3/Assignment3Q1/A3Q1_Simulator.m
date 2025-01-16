@@ -9,18 +9,20 @@ T = Nsps/fs;                % Symbol period [ns]
 t = 0:1/fs:T*Nsym-1/fs;     % Time vector [ns]
 %% Q1.1
 % QAM Demodulation
-T0 = ;     % Starting sampling instant
+% matched filter has a nature of a rectangular pulse
+% so we Nsps/2 coz peak of matched filter output
+T0 = Nsps / 2;
 
 % --- Carrier f0 ---
-psi0_I = ;        % <-- fill in
-psi0_Q = ;        % <-- fill in
+psi0_I = sqrt(2) * cos(2 * pi * f0 * t);        % <-- fill in
+psi0_Q = sqrt(2) * sin(2 * pi * f0 * t);        % <-- fill in
 
 r0_Ik = QAMDemuxReceiver(r_t, psi0_I, phi, T0, Nsps);
 r0_Qk = QAMDemuxReceiver(r_t, psi0_Q, phi, T0, Nsps);
 
 % --- Carrier f0 ---
-psi1_I = ;        % <-- fill in
-psi1_Q = ;        % <-- fill in
+psi1_I = sqrt(2) * cos(2 * pi * f1 * t);        % <-- fill in
+psi1_Q = sqrt(2) * sin(2 * pi * f1 * t);        % <-- fill in
 
 r1_Ik = QAMDemuxReceiver(r_t, psi1_I, phi, T0, Nsps);
 r1_Qk = QAMDemuxReceiver(r_t, psi1_Q, phi, T0, Nsps);

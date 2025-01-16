@@ -1,15 +1,19 @@
 function [r_Ik_prime, r_Qk_prime] = CompQAMImbalance(r_Ik, r_Qk, delay, f1)
     % CompQAMImbalance: Compensates for QAM imbalance in carrier f1 due to phase shift.
-    % phase shift introduced by the delay
+    % Calculate the phase shift introduced by the delay
     theta = 2 * pi * f1 * delay;
 
-    % rotation matrix to compensate imbalance
+    % Rotation matrix to compensate the imbalance
     rotation_matrix = [cos(theta), sin(theta); 
                       -sin(theta), cos(theta)];
 
+    % Combine the I and Q components into a 2xN matrix for rotation
     r_k = [r_Ik; r_Qk];
+
+    % Apply the inverse rotation to compensate for the imbalance
     r_k_prime = rotation_matrix * r_k;
 
+    % Separate the in-phase and quadrature components
     r_Ik_prime = r_k_prime(1, :);
     r_Qk_prime = r_k_prime(2, :);
 end
