@@ -1,8 +1,8 @@
 function [v] = encodeHamming(u)
-    P = [1 0 1; 
+    P = [1 1 0; 
+         0 1 1; 
          1 1 1; 
-         1 1 0; 
-         0 1 1];
+         1 0 1];
 
     G = [eye(4), P];
     % encoding the info bits

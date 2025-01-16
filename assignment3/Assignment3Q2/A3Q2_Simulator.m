@@ -43,7 +43,7 @@ for idx = 1:length(SNR)
         decoded = decodeML_SD(received, P)
         %Count ML-SD errors
         ERRS(3, idx) = ERRS(3, idx) + calculateErrors(info, decoded);
-    
+
         %Decode using Hamming decoding
         decoded = decodeSyndrome(received, P);
         %Count Hamming errors

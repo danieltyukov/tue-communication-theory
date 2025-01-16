@@ -8,9 +8,9 @@ function [v_hat] = decodeSyndrome(r, P)
     
     % Define the parity check matrix H
     H = [
-        1 1 1 0 1 0 0;
-        0 1 1 1 0 1 0;
-        1 1 0 1 0 0 1
+        1 0 1 1 1 0 0;
+        1 1 1 0 0 1 0;
+        0 1 1 1 0 0 1
     ];
     
     % Codebook for (7,4) Hamming code
