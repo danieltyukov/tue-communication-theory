@@ -41,7 +41,9 @@ myScatterplot(r1_Ik_prime, r1_Qk_prime, 'Compensated Signal on Carrier $f_1$');
 
 s0_hat_vec = zeros(2,Nsym);
 s1_hat_vec = zeros(2,Nsym);
-P = ;         % <-- fill in
+% possible msgs, kinda works but if there was shitty signal then better to
+% look at the constellation directly...
+P = [-3, -1, 1, 3];         % <-- fill in
 
 for n = 1:Nsym
     r0 = [r0_Ik(n); r0_Qk(n)]; 

@@ -1,15 +1,28 @@
 function s_hat = mlDecision16QAM(r, P)
-    msg = sqrt(P)*(1/sqrt(10)) * [-3 -3 -3 -3 -1 -1 -1 -1  1  1  1  1  3  3  3  3; 
-                                  -3 -1  1  3 -3 -1  1  3 -3 -1  1  3 -3 -1  1  3];
     min_dist = inf;
-    mini = 1;
-    for i = 1:size(msg, 2)
-        si = msg(:, i); % Constellation point
-        dist = norm(r - si);
-        if dist < min_dist % if better distance found...
-            min_dist = dist;
-            mini = i;
+    s_hat = zeros(2, 1);
+
+    % personal note: P is the expected symbols (since we aleady aligned the 
+    % position of the constellation diagram for r^1 we can hust use the give message symbol positions...)
+    % so P is just a set of {s} and then since pass {r} we can calculate
+    % Euclidean disatnce (r-s)^2 and then just find lowest distance..
+    
+
+
+    % all possible symbol pairs
+    for i = 1:length(P)
+        for j = 1:length(P)
+            % the symbol (isolated kinda)
+            s_candidate = [P(i); P(j)];
+
+            % euclidean distance
+            dist = norm(r - s_candidate);
+
+            % as it loops through and finds lower distance -> change...
+            if dist < min_dist
+                min_dist = dist;
+                s_hat = s_candidate;
+            end
         end
     end
-    s_hat = msg(:, mini);
 end

@@ -10,7 +10,7 @@ t = 0:1/fs:T*Nsym-1/fs;     % Time vector [ns]
 %% Q1.1
 % QAM Demodulation
 % matched filter has a nature of a rectangular pulse
-% 
+% so we Nsps/2 coz peak of matched filter output
 T0 = Nsps / 2;
 
 % --- Carrier f0 ---
@@ -41,7 +41,8 @@ myScatterplot(r1_Ik_prime, r1_Qk_prime, 'Compensated Signal on Carrier $f_1$');
 
 s0_hat_vec = zeros(2,Nsym);
 s1_hat_vec = zeros(2,Nsym);
-P = ;         % <-- fill in
+% possible msgs, kinda works but 
+P = [-3, -1, 1, 3];         % <-- fill in
 
 for n = 1:Nsym
     r0 = [r0_Ik(n); r0_Qk(n)]; 
