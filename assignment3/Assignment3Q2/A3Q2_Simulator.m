@@ -24,7 +24,6 @@ for idx = 1:length(SNR)
         
         %Encode the codeword using your implementation
         encoded = encodeHamming(info);
-%%
     
         %Modulate the encoded symbols using OOK modulation
         modulated = sqrt(2*P) * encoded;
@@ -33,22 +32,22 @@ for idx = 1:length(SNR)
         sigma = sqrt(P / 10.^(SNR(idx)/10));
         received = modulated + sigma*randn(size(modulated));
         %Count uncoded errors
-        ERRS(1, idx) = ERRS(1, idx) + calculateErrors(encoded, received);
+        %ERRS(1, idx) = ERRS(1, idx) + calculateErrors(encoded, received);
     
         %Decode using ML-HD decoding
-        decoded = decodeML_HD(received);
+        decoded = decodeML_HD(received, P)
         %Count ML-HD errors
-        ERRS(2, idx) = ERRS(2, idx) + calculateErrors(info, decoded);
+        %ERRS(2, idx) = ERRS(2, idx) + calculateErrors(info, decoded);
     
         %Decode using ML-SD decoding
-        decoded = decodeML_SD(received);
+        decoded = decodeML_SD(received, P)
         %Count ML-SD errors
-        ERRS(3, idx) = ERRS(3, idx) + calculateErrors(info, decoded);
+        %ERRS(3, idx) = ERRS(3, idx) + calculateErrors(info, decoded);
     
         %Decode using Hamming decoding
-        decoded = decodeSyndrome(received);
+        %decoded = decodeSyndrome(received);
         %Count Hamming errors
-        ERRS(4, idx) = ERRS(4, idx) + calculateErrors(info, decoded);
+        %ERRS(4, idx) = ERRS(4, idx) + calculateErrors(info, decoded);
     end
 end
 
