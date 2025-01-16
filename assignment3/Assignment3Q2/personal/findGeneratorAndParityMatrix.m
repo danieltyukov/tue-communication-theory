@@ -7,10 +7,10 @@ function [G, H] = findGeneratorAndParityMatrix()
     I_k = eye(k);
     
     % Parity matrix (k x (n-k)) for Hamming (7,4) code
-    P = [1 0 1; 
+    P = [1 1 0; 
+         0 1 1; 
          1 1 1; 
-         1 1 0; 
-         0 1 1];
+         1 0 1];
     
     % Generator matrix G in systematic form
     G = [I_k P]

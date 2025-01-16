@@ -19,7 +19,6 @@ y = r > threshold;
     0 1 1 1 0 0 1
     1 1 1 1 1 1 1
 ];
-    
     v_hat = zeros(size(y));
     for i = 1:size(y,1)
         dist = sum(abs(C - y(i,:)), 2);

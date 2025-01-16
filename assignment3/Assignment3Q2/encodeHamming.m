@@ -5,6 +5,5 @@ function [v] = encodeHamming(u)
          1 0 1];
 
     G = [eye(4), P];
-    % encoding the info bits
     v = mod(u * G, 2);
 end
