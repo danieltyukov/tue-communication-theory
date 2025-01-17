@@ -35,12 +35,12 @@ for idx = 1:length(SNR)
         ERRS(1, idx) = ERRS(1, idx) + calculateErrors(encoded, received);
     
         %Decode using ML-HD decoding
-        decoded = decodeML_HD(received, P)
+        decoded = decodeML_HD(received, P);
         %Count ML-HD errors
         ERRS(2, idx) = ERRS(2, idx) + calculateErrors(info, decoded);
     
         %Decode using ML-SD decoding
-        decoded = decodeML_SD(received, P)
+        decoded = decodeML_SD(received, P);
         %Count ML-SD errors
         ERRS(3, idx) = ERRS(3, idx) + calculateErrors(info, decoded);
 
