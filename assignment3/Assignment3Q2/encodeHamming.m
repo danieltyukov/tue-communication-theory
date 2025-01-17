@@ -3,7 +3,6 @@ function [v] = encodeHamming(u)
          0 1 1; 
          1 1 1; 
          1 0 1];
-
     G = [eye(4), P];
     v = mod(u * G, 2);
 end
